@@ -5,7 +5,7 @@ const forecast = require('./local-modules/forecast');
 
 const address = process.argv[2]
 
-geocode(address, (error, geoData) => {
+geocode(address, (error, { latitude, longitude, location }) => {
     if (address === undefined) {
         return console.log('No location is provided')
     } else {
@@ -13,12 +13,14 @@ geocode(address, (error, geoData) => {
             return console.log(error)
         }
         
-        forecast(geoData.latitude, geoData.longitude, (error, forecastData) => {
+        // const { latitude, longitude, location } = geoData;
+
+        forecast(latitude, longitude, (error, forecastData) => {
             if (error) {
                 return console.log(error)
             }
     
-            console.log(chalk.blue.inverse(geoData.location))
+            console.log(chalk.blue.inverse(location))
             console.log(chalk.blue(forecastData))
         })
     }
