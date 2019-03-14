@@ -15,7 +15,6 @@ const forecast = (latitude, longitude, callback) => {
     })
 
 }
-// `location: ${response.body.timezone},\nsummary: ${response.body.daily.data[0].summary},\ntemperature: ${response.body.currently.temperature} °C,\nchanceOfrain: ${response.body.currently.precipProbability} %`
 
 module.exports = forecast
 
